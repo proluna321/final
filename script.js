@@ -208,7 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const touches = e.touches || [e];
             if (touches.length === 1) {
-                // Single-finger drag
                 isDragging = true;
                 isMultiTouch = false;
                 initialMouseX = touches[0].clientX;
@@ -217,7 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 initialRelY = parseFloat(element.dataset.relY) || 0.5;
                 element.classList.add('dragging');
             } else if (touches.length === 2) {
-                // Two-finger scale and rotate
                 isDragging = false;
                 isMultiTouch = true;
                 initialFontSize = parseFloat(element.style.fontSize) || 24;
@@ -236,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const touches = e.touches || [e];
             if (isDragging && touches.length === 1) {
-                // Single-finger drag
                 const event = touches[0];
                 const dx = event.clientX - initialMouseX;
                 const dy = event.clientY - initialMouseY;
@@ -249,7 +246,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.dataset.relY = relY;
                 updateTextCSSPosition(element);
             } else if (isMultiTouch && touches.length === 2) {
-                // Two-finger scale and rotate
                 const currentDistance = getTouchDistance(touches[0], touches[1]);
                 const currentAngle = getTouchAngle(touches[0], touches[1]);
                 const scaleFactor = currentDistance / initialDistance;
